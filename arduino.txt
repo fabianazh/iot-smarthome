@@ -1,0 +1,42 @@
+// Basic
+void setup() {
+    pinMode(D1, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    if (Serial.available() > 0) {
+        char command = Serial.read();
+        if (command == '1') {
+            digitalWrite(D1, HIGH);
+        } else if (command == '0') {
+            digitalWrite(D1, LOW);
+        }
+    }
+}
+
+
+// Brightness
+int ledPin = D1;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char command = Serial.read();
+
+    if (command == '1' || command == 'B') {
+      if (command == 'B') {
+        int brightnessValue = Serial.parseInt();
+        analogWrite(ledPin, brightnessValue);
+      } else {
+        digitalWrite(LED_BUILTIN, HIGH);
+      }
+    } else if (command == '0') {
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+  }
+}
