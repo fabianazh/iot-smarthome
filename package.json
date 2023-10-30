@@ -1,9 +1,10 @@
 {
+    "homepage": "http://fabianazh.github.io/iot-smarthome/",
     "private": true,
     "type": "module",
     "scripts": {
         "predeploy": "npm run build",
-        "deploy": "",
+        "deploy": "gh-pages -d dist",
         "dev": "vite",
         "build": "vite build",
         "server": "node public/js/server.mjs"
