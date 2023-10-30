@@ -1,7 +1,9 @@
-const toggleSwitch = document.getElementById("onoff");
-const ws = new WebSocket("ws://localhost:3000");
+$(document).ready(function () {
+    const toggleSwitch = $("#onoff");
+    const ws = new WebSocket("ws://localhost:3000");
 
-toggleSwitch.addEventListener("change", () => {
-    const lampStatus = toggleSwitch.checked ? "1" : "0";
-    ws.send(lampStatus);
+    toggleSwitch.on("change", function () {
+        const lampStatus = toggleSwitch.prop("checked") ? "1" : "0";
+        ws.send(lampStatus);
+    });
 });
